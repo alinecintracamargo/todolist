@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 import com.example.todolist.entity.Todo;
@@ -37,6 +36,14 @@ class TodolistApplicationTests {
 
 	@Test
 	void testCreateTodoFailure() {
+		webTestClient
+		.post()
+		.uri("/todos")
+		.bodyValue(
+			new Todo("", "", false, 0 )
+			).exchange()
+			.expectStatus().isBadRequest();
+		
 	}
 
 }
