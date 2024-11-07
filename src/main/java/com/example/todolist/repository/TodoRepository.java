@@ -8,7 +8,5 @@ import com.example.todolist.entity.Todo;
 
 public interface TodoRepository extends JpaRepository<Todo, Long>{
 
-    void findAll(Sort sort);
-
 }
     
